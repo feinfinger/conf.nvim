@@ -5,13 +5,13 @@
 return {
   'github/copilot.vim',
   {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    branch = "canary",
+    'CopilotC-Nvim/CopilotChat.nvim',
+    branch = 'main',
     dependencies = {
-      { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
-      { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
+      { 'zbirenbaum/copilot.lua' }, -- or github/copilot.vim
+      { 'nvim-lua/plenary.nvim' }, -- for curl, log wrapper
     },
-    build = "make tiktoken", -- Only on MacOS or Linux
+    build = 'make tiktoken', -- Only on MacOS or Linux
     opts = {
       debug = true, -- Enable debugging
       -- See Configuration section for rest
