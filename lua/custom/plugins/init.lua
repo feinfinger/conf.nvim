@@ -3,6 +3,11 @@
 --
 -- See the kickstart.nvim README for more information
 return {
+  --   ______ __  __        __                   _ __     __
+  --  / ___(_) /_/ /  __ __/ /    _______  ___  (_) /__  / /_
+  -- / (_ / / __/ _ \/ // / _ \  / __/ _ \/ _ \/ / / _ \/ __/
+  -- \___/_/\__/_//_/\_,_/_.__/  \__/\___/ .__/_/_/\___/\__/
+  --                                    /_/
   'github/copilot.vim',
   {
     'CopilotC-Nvim/CopilotChat.nvim',
