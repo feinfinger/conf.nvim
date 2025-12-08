@@ -781,9 +781,11 @@ require('lazy').setup({
           --  This will expand snippets if the LSP sent a snippet.
           ['<C-y>'] = cmp.mapping.confirm { select = true },
 
+          -- Accept completion with Enter
+          ['<CR>'] = cmp.mapping.confirm { select = true },
+
           -- If you prefer more traditional completion keymaps,
           -- you can uncomment the following lines
-          --['<CR>'] = cmp.mapping.confirm { select = true },
           --['<Tab>'] = cmp.mapping.select_next_item(),
           --['<S-Tab>'] = cmp.mapping.select_prev_item(),
 
@@ -954,6 +956,31 @@ require('lazy').setup({
       lazy = '💤 ',
     },
   },
+})
+
+
+-- ============================================================================
+-- Mail file settings
+-- ============================================================================
+-- Configure proper text wrapping for mail files
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'mail',
+  callback = function()
+    -- Set textwidth to 72 for email body (RFC 2822 recommends <78)
+    vim.opt_local.textwidth = 72
+    -- Don't auto-wrap while typing, only when using gq (manual formatting)
+    vim.opt_local.formatoptions:remove('t')
+    vim.opt_local.formatoptions:remove('c')
+    -- Enable format-flowed (w flag)
+    vim.opt_local.formatoptions:append('w')
+
+    -- Keymap to format the email body (after headers)
+    -- Position cursor in body and press <leader>mb to wrap text
+    vim.keymap.set('n', '<leader>mb', 'gq}', {
+      buffer = true,
+      desc = '[M]ail [B]ody format paragraph'
+    })
+  end,
 })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
