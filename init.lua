@@ -406,7 +406,10 @@ require('lazy').setup({
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
+      vim.keymap.set('n', '<leader>n', ':Neotree toggle<CR>', { desc = '[N]eoTree toggle' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
+      vim.keymap.set('n', '<leader>a', ':AerialToggle!<CR>', { desc = '[A]erial Toggle' })
+      vim.keymap.set('n', '<leader>p', ':NeovimProjectHistory<CR>', { desc = '[P]roject History' })
       vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
       vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
       vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
@@ -958,7 +961,6 @@ require('lazy').setup({
   },
 })
 
-
 -- ============================================================================
 -- Mail file settings
 -- ============================================================================
@@ -969,16 +971,16 @@ vim.api.nvim_create_autocmd('FileType', {
     -- Set textwidth to 72 for email body (RFC 2822 recommends <78)
     vim.opt_local.textwidth = 72
     -- Don't auto-wrap while typing, only when using gq (manual formatting)
-    vim.opt_local.formatoptions:remove('t')
-    vim.opt_local.formatoptions:remove('c')
+    vim.opt_local.formatoptions:remove 't'
+    vim.opt_local.formatoptions:remove 'c'
     -- Enable format-flowed (w flag)
-    vim.opt_local.formatoptions:append('w')
+    vim.opt_local.formatoptions:append 'w'
 
     -- Keymap to format the email body (after headers)
     -- Position cursor in body and press <leader>mb to wrap text
     vim.keymap.set('n', '<leader>mb', 'gq}', {
       buffer = true,
-      desc = '[M]ail [B]ody format paragraph'
+      desc = '[M]ail [B]ody format paragraph',
     })
   end,
 })

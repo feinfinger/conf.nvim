@@ -50,10 +50,11 @@ return {
   config = function()
     require('claude-code').setup()
   end,
-  --                __ __                 __       __
-  --   ___ ___ _   / // /  ___ ____  ___/ /______/ /__ ______
-  --  / -_)  ' \ / _  /  / _ `/ _ \/ _  / __/ -_|_-<(_-<
-  --  \__/_/_/_//_//_/   \_,_/\___/\_,_/_/  \__/___/___/
+  --    ____           _ __          __   __
+  --   / __/_ _  ___ _(_) / ___ ____/ /__/ /______ ___ ___
+  --  / _//  ' \/ _ `/ / / / _ `/ _  / _  / __/ -_|_-<(_-<
+  -- /___/_/_/_/\_,_/_/_/  \_,_/\_,_/\_,_/_/  \__/___/___/
+  --
   --
   -- Email address completion using notmuch
   -- Only triggers in To:/Cc:/Bcc: header fields
@@ -61,5 +62,68 @@ return {
   {
     'adborden/vim-notmuch-address',
     ft = 'mail', -- Only load for mail filetype
+  },
+  --                     _         __
+  --    ___  _______    (_)__ ____/ /_
+  --   / _ \/ __/ _ \  / / -_) __/ __/
+  --  / .__/_/  \___/_/ /\__/\__/\__/
+  -- /_/           |___/
+  --
+  {
+    'coffebar/neovim-project',
+    opts = {
+      projects = { -- define project roots
+        '~/git/*',
+      },
+      picker = {
+        type = 'telescope', -- one of "telescope", "fzf-lua", or "snacks"
+      },
+    },
+    init = function()
+      -- enable saving the state of plugins in the session
+      vim.opt.sessionoptions:append 'globals' -- save global variables that start with an uppercase letter and contain at least one lowercase letter.
+    end,
+    dependencies = {
+      { 'nvim-lua/plenary.nvim' },
+      -- optional picker
+      { 'nvim-telescope/telescope.nvim', tag = '0.1.4' },
+      -- optional picker
+      { 'ibhagwan/fzf-lua' },
+      -- optional picker
+      { 'folke/snacks.nvim' },
+      { 'Shatur/neovim-session-manager' },
+    },
+    lazy = false,
+    priority = 100,
+  },
+  --                      __
+  --   ___  ___ ___  ____/ /________ ___
+  --  / _ \/ -_) _ \/___/ __/ __/ -_) -_)
+  -- /_//_/\__/\___/    \__/_/  \__/\__/
+  --
+  --
+  {
+    'nvim-neo-tree/neo-tree.nvim',
+    branch = 'v3.x',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'MunifTanjim/nui.nvim',
+      'nvim-tree/nvim-web-devicons', -- optional, but recommended
+    },
+    lazy = false, -- neo-tree will lazily load itself
+  },
+  --                _      __
+  --  ___ ____ ____(_)__ _/ /
+  -- / _ `/ -_) __/ / _ `/ /
+  -- \_,_/\__/_/ /_/\_,_/_/
+  --
+  {
+    'stevearc/aerial.nvim',
+    opts = {},
+    -- Optional dependencies
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter',
+      'nvim-tree/nvim-web-devicons',
+    },
   },
 }
