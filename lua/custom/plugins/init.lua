@@ -68,7 +68,6 @@ return {
   --   / _ \/ __/ _ \  / / -_) __/ __/
   --  / .__/_/  \___/_/ /\__/\__/\__/
   -- /_/           |___/
-  --
   {
     'coffebar/neovim-project',
     opts = {
@@ -100,8 +99,6 @@ return {
   --   ___  ___ ___  ____/ /________ ___
   --  / _ \/ -_) _ \/___/ __/ __/ -_) -_)
   -- /_//_/\__/\___/    \__/_/  \__/\__/
-  --
-  --
   {
     'nvim-neo-tree/neo-tree.nvim',
     branch = 'v3.x',
@@ -116,7 +113,6 @@ return {
   --  ___ ____ ____(_)__ _/ /
   -- / _ `/ -_) __/ / _ `/ /
   -- \_,_/\__/_/ /_/\_,_/_/
-  --
   {
     'stevearc/aerial.nvim',
     opts = {},
@@ -124,6 +120,29 @@ return {
     dependencies = {
       'nvim-treesitter/nvim-treesitter',
       'nvim-tree/nvim-web-devicons',
+    },
+  },
+  --                       _ __
+  --   ___  ___ ___  ___ _(_) /_
+  --  / _ \/ -_) _ \/ _ `/ / __/
+  -- /_//_/\__/\___/\_, /_/\__/
+  --               /___/
+  {
+    'NeogitOrg/neogit',
+    lazy = true,
+    dependencies = {
+      'nvim-lua/plenary.nvim', -- required
+      'sindrets/diffview.nvim', -- optional - Diff integration
+
+      -- Only one of these is needed.
+      'nvim-telescope/telescope.nvim', -- optional
+      'ibhagwan/fzf-lua', -- optional
+      'nvim-mini/mini.pick', -- optional
+      'folke/snacks.nvim', -- optional
+    },
+    cmd = 'Neogit',
+    keys = {
+      { '<leader>gg', '<cmd>Neogit<cr>', desc = 'Show Neogit UI' },
     },
   },
 }

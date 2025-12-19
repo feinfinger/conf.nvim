@@ -985,5 +985,11 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
+-- Folding settings
+-- Use Treesitter for folding if available, otherwise fallback to indent_string
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.opt.foldlevel = 99 -- Start with all folds open
+
 -- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
+-- vim: set ts=4 sts=4 sw=4 et
